@@ -1,0 +1,50 @@
+{{ 'hero.css' | asset_url | stylesheet_tag }}
+
+<div class="hero full-width">
+  <div class="hero-content">
+    <h1>{{ section.settings.hero_title }}</h1>
+    <p>{{ section.settings.hero_subtitle }}</p>
+    <a href="{{ section.settings.hero_cta_link }}">
+      {{ section.settings.hero_cta_text }}
+    </a>
+  </div>
+</div>
+
+<style>
+  .hero {
+    background-image: url('{{ section.settings.background_image | image_url }}');
+  }
+</style>
+
+{% schema %}
+{
+  "name": "hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "Hero cta text"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_link",
+      "label": "Hero cta link"
+    }
+  ]
+}
+{% endschema %}
