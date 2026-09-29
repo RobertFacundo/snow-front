@@ -11,7 +11,13 @@
   "sections": {
     "main": {
       "type": "hero",
-      "settings": {}
+      "settings": {
+        "background_image": "shopify://shop_images/visit-almaty-wN4D-mVR7fE-unsplash.jpg",
+        "hero_title": "Ride Beyond",
+        "hero_subtitle": "Snowboards built for the next line.",
+        "hero_cta_text": "Shop Snowboards",
+        "hero_cta_link": "shopify://collections/all"
+      }
     }
   },
   "order": [
