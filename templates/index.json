@@ -20,11 +20,11 @@
       }
     },
     "featured": {
-    "type": "featured",
-    "settings": {
-      "featured_collections":"Snowboards"
+      "type": "featured",
+      "settings": {
+        "featured_collection": "automated-collection"
+      }
     }
-  }
   },
   "order": [
     "main",
