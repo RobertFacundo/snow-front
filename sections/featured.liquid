@@ -1,0 +1,27 @@
+<div>
+  <div class="featured-grid">
+    {% for product in section.settings.featured_collection.products limit: 4 %}
+      <a href="{{ product.url }}">
+        <img
+          src="{{ product.featured_image | image_url: width: 800 }}"
+          width="{{ product.featured_image.width }}"
+          height="{{ product.featured_image.height }}"
+          alt="{{ product.featured_image.alt | escape }}"
+        >
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured products",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Featured collection"
+    }
+  ]
+}
+{% endschema %}

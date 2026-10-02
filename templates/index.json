@@ -18,9 +18,16 @@
         "hero_cta_text": "Shop Snowboards",
         "hero_cta_link": "shopify://collections/all"
       }
+    },
+    "featured": {
+    "type": "featured",
+    "settings": {
+      "featured_collections":"Snowboards"
     }
+  }
   },
   "order": [
-    "main"
+    "main",
+    "featured"
   ]
 }
