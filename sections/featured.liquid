@@ -6,7 +6,7 @@
 </div>
 <div class="featured-grid">
   {% for product in section.settings.featured_collection.products limit: 4 %}
-    <a class="featured-product" href="{{ product.url }}">
+    <a class="featured-product" href="{{ product.url }}"  data-product-handle="{{ product.handle }}">
       <img
         src="{{ product.featured_image | image_url: width: 800 }}"
         width="{{ product.featured_image.width }}"
