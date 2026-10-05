@@ -1,0 +1,21 @@
+.collection-product {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.collection-product__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.collection-product__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.collection-product__content p {
+  margin: 0;
+}
