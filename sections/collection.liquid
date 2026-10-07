@@ -4,6 +4,7 @@
 
   https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
 {% endcomment %}
+
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 
 {% render 'product-header',
@@ -15,12 +16,12 @@
 {% render 'collection-filters' %}
 
 <div class="collection-products">
-  {% paginate collection.products by 20 %}
+  {% paginate collection.products by 4 %}
     {% for product in collection.products %}
       {% render 'product-card', product: product %}
     {% endfor %}
 
-    {{ paginate | default_pagination }}
+   {% render 'pagination', paginate: paginate %}
   {% endpaginate %}
 </div>
 

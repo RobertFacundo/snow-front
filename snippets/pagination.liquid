@@ -1,0 +1,45 @@
+{{ 'pagination.css' | asset_url | stylesheet_tag }}
+
+{% if paginate.pages > 1 %}
+  <nav class="pagination" aria-label="Pagination">
+
+    {% if paginate.previous %}
+      <a
+        href="{{ paginate.previous.url }}"
+        class="pagination__link pagination__link--previous"
+      >
+        Previous
+      </a>
+    {% endif %}
+
+    <div class="pagination__pages">
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <a
+            href="{{ part.url }}"
+            class="pagination__link"
+          >
+            {{ part.title }}
+          </a>
+        {% else %}
+          <span
+            class="pagination__link pagination__link--current"
+            aria-current="page"
+          >
+            {{ part.title }}
+          </span>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if paginate.next %}
+      <a
+        href="{{ paginate.next.url }}"
+        class="pagination__link pagination__link--next"
+      >
+        Next
+      </a>
+    {% endif %}
+
+  </nav>
+{% endif %}

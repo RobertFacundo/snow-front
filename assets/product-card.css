@@ -1,21 +1,58 @@
 .collection-product {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #d8d8d8;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.collection-product:hover {
+  border-color: #111;
+  transform: translateY(-3px);
 }
 
 .collection-product__image {
-  width: 100%;
+  width: 70%;
   height: auto;
   display: block;
+  margin-inline: auto;
+  transition: transform 0.4s ease;
+}
+
+.collection-product:hover .collection-product__image {
+  transform: scale(1.03);
 }
 
 .collection-product__content {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .collection-product__content p {
   margin: 0;
+}
+
+.collection-product__content p:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.collection-product__content p:last-child {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.collection-product__content a {
+  color: black;
+  text-decoration: none;
+  transition: letter-spacing 0.3s ease;
+}
+
+.collection-product__content a:hover {
+  letter-spacing: 0.8px;
 }
