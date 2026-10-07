@@ -12,6 +12,8 @@
   header_title: section.settings.header_title
 %}
 
+{% render 'collection-filters' %}
+
 <div class="collection-products">
   {% paginate collection.products by 20 %}
     {% for product in collection.products %}

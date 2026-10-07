@@ -16,3 +16,21 @@
     gap: 1rem;
   }
 }
+
+.collection-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.collection-filters__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collection-filters__title {
+  margin: 0;
+  font-size: 1rem;
+}
