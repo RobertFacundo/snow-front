@@ -1,0 +1,37 @@
+.product-header {
+  position: relative;
+  min-height: 320px;
+  padding: 2rem;
+  background-image: var(--product-header-image);
+  background-size: cover;
+  background-position: center;
+  background-color: #111;
+  color: white;
+}
+
+.product-header__breadcrumb {
+  position: relative;
+  z-index: 1;
+}
+
+.product-header__content {
+  position: relative;
+  z-index: 1;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.product-header__title {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+.product-header__description {
+  max-width: 700px;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
