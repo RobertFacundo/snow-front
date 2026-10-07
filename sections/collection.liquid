@@ -6,8 +6,11 @@
 {% endcomment %}
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 
-{% render 'breadcrumb' %}
-{% render 'product-header', collection: collection, header_image: section.settings.header_image %}
+{% render 'product-header',
+  collection: collection,
+  header_image: section.settings.header_image,
+  header_title: section.settings.header_title
+%}
 
 <div class="collection-products">
   {% paginate collection.products by 20 %}
@@ -27,6 +30,12 @@
       "type": "image_picker",
       "id": "header_image",
       "label": "Header image"
+    },
+    {
+      "type": "text",
+      "id": "header_title",
+      "label": "Header title",
+      "default": "Find your next ride"
     }
   ]
 }

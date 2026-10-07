@@ -12,7 +12,7 @@
 
   <div class="product-header__content">
     <h1 class="product-header__title">
-      {{ collection.title }}
+      {{ header_title | default: collection.title }}
     </h1>
 
     {% if collection.description != blank %}
