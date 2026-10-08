@@ -7,23 +7,31 @@
 
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 
-{% render 'product-header',
-  collection: collection,
-  header_image: section.settings.header_image,
-  header_title: section.settings.header_title
-%}
+<section
+  class="collection"
+  data-section-id="{{ section.id }}"
+>
+  {% render 'product-header',
+    collection: collection,
+    header_image: section.settings.header_image,
+    header_title: section.settings.header_title
+  %}
 
-{% render 'collection-filters' %}
+  {% render 'collection-filters' %}
+  <div class="collection-products">
+    {% paginate collection.products by 4 %}
+      {% if collection.products_count > 0 %}
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      {% else %}
+        <p class="collection-products__empty">No products found.</p>
+      {% endif %}
 
-<div class="collection-products">
-  {% paginate collection.products by 4 %}
-    {% for product in collection.products %}
-      {% render 'product-card', product: product %}
-    {% endfor %}
-
-   {% render 'pagination', paginate: paginate %}
-  {% endpaginate %}
-</div>
+      {% render 'pagination', paginate: paginate %}
+    {% endpaginate %}
+  </div>
+</section>
 
 {% schema %}
 {

@@ -2,12 +2,78 @@
   Collection filters and sorting controls.
 {% endcomment %}
 
-<div class="collection-filters">
-  <div class="collection-filters__group">
-    <h2 class="collection-filters__title">Filters</h2>
-  </div>
+<script
+  src="{{ 'collection-filters.js' | asset_url }}"
+  defer
+></script>
 
-  <div class="collection-filters__group">
-    <h2 class="collection-filters__title">Sort by</h2>
-  </div>
+<div class="collection-filters full-width">
+  {% for filter in collection.filters %}
+    <div class="collection-filters__group">
+      <h2 class="collection-filters__title">
+        {{ filter.label }}
+      </h2>
+
+      <div class="collection-filters__values">
+        {% if filter.type == 'list' %}
+          {% for value in filter.values %}
+            <label class="collection-filter">
+              <input
+                type="checkbox"
+                name="{{ value.param_name }}"
+                value="{{ value.value }}"
+                {% if value.active %}
+                  checked
+                {% endif %}
+              >
+
+              <span class="collection-filter__label">
+                {{ value.label }}
+                <span class="collection-filter__count">
+                  {{ value.count }}
+                </span>
+              </span>
+            </label>
+          {% endfor %}
+
+        {% elsif filter.type == 'price_range' %}
+          <label class="collection-filter">
+            <input
+              type="checkbox"
+              data-min=""
+              data-max="700"
+            >
+
+            <span class="collection-filter__label">
+              Under $700
+            </span>
+          </label>
+
+          <label class="collection-filter">
+            <input
+              type="checkbox"
+              data-min="700"
+              data-max="900"
+            >
+
+            <span class="collection-filter__label">
+              $700 – $900
+            </span>
+          </label>
+
+          <label class="collection-filter">
+            <input
+              type="checkbox"
+              data-min="900"
+              data-max=""
+            >
+
+            <span class="collection-filter__label">
+              Over $900
+            </span>
+          </label>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
 </div>
