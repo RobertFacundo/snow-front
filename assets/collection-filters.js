@@ -20,7 +20,7 @@ function updatePriceFilters () {
   })
 }
 
-function updateCollection (url) {
+function updateCollection (url, updateHistory = true) {
   const sectionId = getSectionId()
 
   url.searchParams.set('section_id', sectionId)
@@ -44,7 +44,9 @@ function updateCollection (url) {
 
       browserUrl.searchParams.delete('section_id')
 
-      history.pushState({}, '', browserUrl)
+      if (updateHistory) {
+        history.pushState({}, '', browserUrl)
+      }
 
       updatePriceFilters()
     })
@@ -65,7 +67,7 @@ document.addEventListener('change', event => {
     if (checkbox.checked) {
       url.searchParams.append(checkbox.name, checkbox.value)
     } else {
-      url.searchParams.delete(checkbox.name)
+      url.searchParams.delete(checkbox.name, checkbox.value)
     }
   } else {
     url.searchParams.delete('filter.v.price.gte')
@@ -83,4 +85,10 @@ document.addEventListener('change', event => {
   }
 
   updateCollection(url)
+})
+
+window.addEventListener('popstate', () => {
+  const url = new URL(window.location.href)
+
+  updateCollection(url, false)
 })

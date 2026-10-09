@@ -16,6 +16,9 @@ window.ProductModal = {
   render (product) {
     const modalBody = document.querySelector('.product-modal__body')
 
+    const variant = product.variants[0]
+    const variantId = variant.id
+
     const image = product.featured_image
       ? `https:${product.featured_image}`
       : ''
@@ -95,17 +98,11 @@ window.ProductModal = {
           <button
             type="button"
             class="product-modal__add"
+            data-variant-id="${variantId}"
             ${product.available ? '' : 'disabled'}
           >
             ${product.available ? 'Add to cart' : 'Sold out'}
           </button>
-
-          <a
-            class="product-modal__link"
-            href="${product.url}"
-          >
-            View full product
-          </a>
 
         </div>
 

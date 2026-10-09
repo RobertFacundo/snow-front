@@ -17,9 +17,14 @@
     {% endif %}
 
     <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
-      {% endif %}
+      {% comment %}
+        {% if cart.item_count > 0 %}
+          <sup>{{ cart.item_count }}</sup>
+        {% endif %}
+      {% endcomment %}
+      <div id="cart-counter-wrapper">
+        {% render 'cart-counter' %}
+      </div>
 
       {{ 'icon-cart.svg' | inline_asset_content }}
     </a>
