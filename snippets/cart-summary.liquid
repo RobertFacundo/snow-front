@@ -1,0 +1,14 @@
+{{ 'cart-summary.css' | asset_url | stylesheet_tag }}
+
+<div class="cart-summary">
+  <h2 class="cart-summary__title">Order summary</h2>
+
+  <div class="cart-summary__total">
+    <span>Total</span>
+    <span>{{ cart.total_price | money }}</span>
+  </div>
+
+  <button class="cart-summary__checkout" type="submit" name="checkout">
+    {{ 'cart.checkout' | t }}
+  </button>
+</div>

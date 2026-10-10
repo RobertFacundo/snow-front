@@ -5,33 +5,37 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
 {% endcomment %}
 
-<h1>{{ 'cart.title' | t }}</h1>
+{{ 'cart.css' | asset_url | stylesheet_tag }}
 
-<form action="{{ routes.cart_url }}" method="post">
-  <table>
-    {% for item in cart.items %}
-      <tr>
-        <td>
-          {% render 'image', image: item.image, url: item.url %}
-        </td>
-        <td>
-          <p>{{ item.product.title }}</p>
-          {{ 'cart.remove' | t | link_to: item.url_to_remove }}
-        </td>
-        <td>
-          <input type="text" name="updates[]" value="{{ item.quantity }}">
-          <input type="submit" value="{{ 'cart.update' | t }}">
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
+<section class="cart-page full-width">
+  <header
+    class="cart-header full-width"
+    {% if section.settings.header_image != blank %}
+      style="background-image: url('{{ section.settings.header_image | image_url }}');"
+    {% endif %}
+  >
+    <h1 class="cart-header__title">{{ 'cart.title' | t }}</h1>
+  </header>
 
-  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
-</form>
+  <form class="cart-layout" action="{{ routes.cart_url }}" method="post">
+    <div class="cart-layout__items">
+      {% render 'cart-details' %}
+    </div>
 
+    <aside class="cart-layout__summary">
+      {% render 'cart-summary' %}
+    </aside>
+  </form>
+</section>
 {% schema %}
 {
   "name": "t:general.cart",
-  "settings": []
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "header_image",
+      "label": "Header background image"
+    }
+  ]
 }
 {% endschema %}

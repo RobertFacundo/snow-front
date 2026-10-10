@@ -1,0 +1,7 @@
+{{ 'cart-details.css' | asset_url | stylesheet_tag }}
+
+<div class="cart-details">
+  {% for item in cart.items %}
+    {% render 'cart-item', item: item %}
+  {% endfor %}
+</div>
