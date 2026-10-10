@@ -11,7 +11,9 @@
   "sections": {
     "main": {
       "type": "cart",
-      "settings": {}
+      "settings": {
+        "header_image": "shopify://shop_images/tourists-head-back-to-snowy-log-cabins.jpg"
+      }
     }
   },
   "order": [
